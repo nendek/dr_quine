@@ -12,6 +12,8 @@
 
 NC = nasm
 NASMFLAGS = -f macho64
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra
 
 COLLEEN= Colleen
 COLLEEN_SRCS = Colleen.s
@@ -29,15 +31,15 @@ all: $(COLLEEN) $(GRACE) $(SULLY)
 
 $(COLLEEN):
 	$(NC) $(NASMFLAGS) -o $(COLLEEN_OBJ) $(COLLEEN_SRCS)
-	$(NC) $(NASMFLAGS) -o $(COLLEEN) $(COLLEEN_OBJ)
+	$(CC) $(CFLAGS) -o $(COLLEEN) $(COLLEEN_OBJ)
 
 $(GRACE):
 	$(NC) $(NASMFLAGS) -o $(GRACE_OBJ) $(GRACE_SRCS)
-	$(NC) $(NASMFLAGS) -o $(GRACE) $(GRACE_OBJ)
+	$(CC) $(CFLAGS) -o $(GRACE) $(GRACE_OBJ)
 
 $(SULLY):
 	$(NC) $(NASMFLAGS) -o $(SULLY_OBJ) $(SULLY_SRCS)
-	$(NC) $(NASMFLAGS) -o $(SULLY) $(SULLY_OBJ)
+	$(CC) $(CFLAGS) -o $(SULLY) $(SULLY_OBJ)
 
 clean:
 	rm -f $(COLLEEN_OBJ) $(GRACE_OBJ) $(SULLY_OBJ)
